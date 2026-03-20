@@ -166,3 +166,10 @@ nohup.out
 peft/temp/
 deepspeed/output_dir
 RLHF
+
+# Hugging Face temporary checkpoints
+models/**/tmp-checkpoint-*/
+models/**/checkpoint-*/
+models/**/tb/
+models/**/*.safetensors
+models/**/pytorch_model.bin
