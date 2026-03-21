@@ -163,6 +163,7 @@ cython_debug/
 
 nohup.out
 */models/
+models/
 peft/temp/
 deepspeed/output_dir
 RLHF
@@ -171,5 +172,6 @@ RLHF
 models/**/tmp-checkpoint-*/
 models/**/checkpoint-*/
 models/**/tb/
+models/**/tb2/
 models/**/*.safetensors
 models/**/pytorch_model.bin
