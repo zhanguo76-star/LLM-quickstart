@@ -166,6 +166,10 @@ nohup.out
 models/
 peft/temp/
 deepspeed/output_dir
+*/outputs/
+deepseek/qwen-1.5b_lora_model-mini_60_steps/
+deepseek/unsloth_compiled_cache/
+unsloth_compiled_cache/
 RLHF
 
 # Hugging Face temporary checkpoints
