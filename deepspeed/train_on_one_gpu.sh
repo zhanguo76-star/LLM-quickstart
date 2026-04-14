@@ -1,3 +1,8 @@
+# 固定使用 py310 环境里的 CUDA 12.1，避免误用系统 /usr/local/cuda-13.2
+export CUDA_HOME="${CONDA_PREFIX:-/home/tiger/miniforge3/envs/py310}"
+export PATH="$CUDA_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib:$CUDA_HOME/lib64:$CUDA_HOME/targets/x86_64-linux/lib:${LD_LIBRARY_PATH:-}"
+
 # DeepSpeed ZeRO-2 模式单 GPU 训练翻译模型（T5-Small）
 deepspeed --num_gpus=1 translation/run_translation.py \
 --deepspeed config/ds_config_zero2.json \
@@ -35,10 +40,11 @@ deepspeed --num_gpus=1 translation/run_translation.py \
 deepspeed --num_gpus=1 translation/run_translation.py \
 --deepspeed config/ds_config_zero3.json \
 --model_name_or_path t5-3b --per_device_train_batch_size 1 \
---output_dir output_dir --overwrite_output_dir --fp16 \
+--output_dir output_dir --overwrite_output_dir --bf16 \
 --do_train --max_train_samples 500 --num_train_epochs 1 \
 --dataset_name wmt16 --dataset_config "ro-en" \
---source_lang en --target_lang ro
+--source_lang en --target_lang ro \
+--save_total_limit 2
 
 
 
